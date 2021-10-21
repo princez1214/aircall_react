@@ -10,7 +10,8 @@ const HeaderContainer = styled.div`
   padding: 16px 16px 0;
   text-align: center;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-
+  
+  z-index: 1;
   .logo {
     width: 100px;
   }

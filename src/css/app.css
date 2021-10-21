@@ -29,7 +29,7 @@ body {
   width: 376px;
   height: 666px;
   z-index: 100;
-
+  position: relative;
   background: white;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
@@ -65,4 +65,25 @@ body {
 
 .between {
   justify-content: space-between;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+  display: flex;
+}
+
+.h-full {
+  height: 100%;
 }
