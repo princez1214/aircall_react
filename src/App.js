@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import './css/app.css'
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
@@ -61,7 +61,5 @@ const App = () => {
     </div>
   );
 };
-
-ReactDOM.render(<App/>, document.getElementById('app'));
 
 export default App;
