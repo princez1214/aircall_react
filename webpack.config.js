@@ -26,6 +26,7 @@ module.exports = {
       }
     ]
   },
+  entry: path.resolve(__dirname, 'src', 'index.js'),
   devServer: {
     historyApiFallback: true
   },
@@ -33,9 +34,8 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
   },
   performance: {
     hints: false
