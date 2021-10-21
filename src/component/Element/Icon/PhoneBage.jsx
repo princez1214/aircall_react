@@ -4,7 +4,6 @@ const PhoneBage = ({ size = 16, fill="#000" }) => {
 
   return (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 785.000000 800.000000" preserveAspectRatio="xMidYMid meet">
-
       <g transform="translate(0.000000,800.000000) scale(0.100000,-0.100000)" stroke="none">
         <path d="M1690 7834 c-226 -25 -347 -51 -487 -103 -271 -101 -472 -232 -674
           -438 -273 -278 -434 -605 -494 -1001 -48 -322 10 -1038 127 -1552 79 -350 229

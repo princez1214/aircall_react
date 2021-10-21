@@ -36,8 +36,11 @@ const HeaderContainer = styled.div`
   }
 `
 
-const Header = () => {
-  const [active, setActive] = useState(1);
+const Header = (props) => {
+  const { 
+    setActive = () => {},
+    selectedItem = 0
+  }  = props
 
   return (
     <HeaderContainer>
@@ -53,7 +56,7 @@ const Header = () => {
                 <Item
                   onActive = {() => setActive(index)} 
                   text={item} 
-                  active={index === active ? true : false}
+                  active={index === selectedItem ? true : false}
                 />
               </div>
             )

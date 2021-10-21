@@ -1,43 +1,12 @@
 import React from 'react'
-import styeld from 'styled-components'
 import Icon from '../Element/Icon'
-
-const ActivityContainer = styeld.div`
-  padding: 8px 0 8px 8px;
-  margin: 12px;
-  border-radius: 8px;
-  border: solid 1px #eee;
-  display: flex;
-  align-items:center;
-  justify-content: space-between;
-  color: #aaa;
-  background: #fafafa;
-  cursor: pointer;
-
-  p {
-    margin: 6px;
-  }
-  .from {
-    font-size: 14px;
-    color: #666;
-  }
-  .to {
-    font-size: 12px;
-  }
-  .am {
-    font-size: 10px;
-    border-radius: 4px 0 0 4px;
-    padding: 2px;
-    border: solid 1px #eee;
-    border-right: none;
-    margin-left: 4px;
-  }
-`
+import { ActivityContainer } from './Activity.style'
 
 const Activity = (props) => {
   const {
     type, direction, from, is_archived, to, via, created, duration
   } = props.call
+  const { badge } = props;
   
   const am = new Date(created).getHours() > 12 ? 'PM' : 'AM'
   const hours = am === 'AM' ? new Date(created).getHours() :  new Date(created).getHours() - 12;
@@ -57,7 +26,12 @@ const Activity = (props) => {
       <div className="flex items-center">
         {renderIcon(type)}
         <div className="ml-2">
-          <p className="from font-bold">{from}</p>
+          <p className="from font-bold">
+            {from}
+            {
+              badge &&< span className="badge">1</span>
+            }
+          </p>
           <p className="to">
             {type==="missed" ? "tried to call on" : ""}
             {type==="answered" ? "received to call from" : ""} {to}

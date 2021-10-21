@@ -62,6 +62,12 @@ const Item = styled.div`
   cursor: pointer;
   margin-bottom: 2px;
   border-bottom: solid 3px ${props => props.active ? "#30b01d" : 'transparent'};
+  svg {
+    opacity:  ${props => props.active ? 1 : 0.7};
+  }
+  &:hover svg {
+    opacity: 1;
+  }
 `
 
 export { BottomContainer, HomeWrapper, Item }

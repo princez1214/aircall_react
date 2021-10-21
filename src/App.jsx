@@ -1,64 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import ArchiveButton from './component/Element/ArchiveButton/ArchiveButton'
-import Activity from './component/Activity/Activity'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import Header from './component/Header/Header'
-import Axios from 'axios'
 import Bottom from './component/Bottom/Bottom';
+import CallActivity from './pages/CallActivity';
+import ActivityDetails from './pages/ActivityDetails';
 
 const ContentWrapper = styled.div`
   padding: 0 16px;
   background-color: #f8f8f8;
-  height: 580px;
+  min-height: 520px;
+  padding-bottom: 40px;
   overflow-y: auto;
+  position: relative;
 `
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [activities, setActivities] = useState([]);
-
-  useEffect(() => {
-    setLoading(true);
-    // get calls
-    Axios.get('https://aircall-job.herokuapp.com/activities')
-      .then((res) => {
-        setLoading(false);
-        let newActivities = [];
-
-        res.data.forEach((call) => {
-          newActivities.push({
-            type: call.call_type,
-            direction: call.direction,
-            from: call.from,
-            is_archived: call.isarchived,
-            to: call.to,
-            via: call.via,
-            created: call.created_at,
-            duration: call.duration
-          })
-        })
-        
-        setActivities([...newActivities])
-      })
-      .catch((error) => {
-        setLoading(false)
-      })
-
-  }, [])
-
+  const history = useHistory();
+  const [activeBitem, setBitem] = useState('phone')
+  const [activeHitem, setHitem] = useState(1);
+  const [missedcallCount, setMissedCallCount] = useState(0)
+ 
   return (
     <div className='container'>
-      <Header />
-      <ContentWrapper>
-        <ArchiveButton />
-        {
-          activities.map((call, index) => (
-            <Activity call={call} key={index}/>
-          ))
-        }
-      </ContentWrapper>
-      <Bottom />
+      <Router history={history}>
+        <Header 
+          setActive = {(item) => setHitem(item)}
+          selectedItem = {activeHitem}
+        />
+        <ContentWrapper>
+          <Switch>
+            <Route exact path="/">
+              <p className="font-bold text-18">Welcome</p>
+            </Route>
+            <Route exact path="/call">
+              <CallActivity 
+                setMissedCall={(count) => setMissedCallCount(count)}
+                activeHitem = {activeHitem}
+              />
+            </Route>
+            <Route path="/call/:id">
+              <ActivityDetails />
+            </Route>
+            <Route path="/contracts">
+              <p className="font-bold text-18">Contracts</p>
+            </Route>
+            <Route path="/setting">
+            <p className="font-bold text-18">Settings</p>
+            </Route>
+          </Switch>
+        </ContentWrapper>
+        <Bottom 
+          setItem = {(item) => setBitem(item)} 
+          activeItem = {activeBitem}
+          missedcallCount={missedcallCount}
+        />
+      </Router>
     </div>
   );
 };

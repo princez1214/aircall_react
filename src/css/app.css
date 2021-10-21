@@ -6,6 +6,15 @@ html, body, h1, h2, h3, ul, li {
   font-size: 100%;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: white;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
+
 body {
   background: #233142;
   font-family: helvetica, arial, sans-serif;
@@ -86,4 +95,20 @@ body {
 
 .h-full {
   height: 100%;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.ml-4 {
+  margin-left: 16px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+.info {
+  color: #ccc;
 }

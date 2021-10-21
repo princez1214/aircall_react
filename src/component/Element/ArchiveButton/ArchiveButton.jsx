@@ -9,6 +9,10 @@ const ArchiveButtonContainer = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  position: sticky;
+  background-color: #f8f8f8;
+  z-index: 20;
+  top: 0px;
   span {
     margin-left: 16px;
   }
@@ -18,9 +22,9 @@ const ArchiveButtonContainer = styled.div`
   }
 `
 
-const ArchiveButton = () => {
+const ArchiveButton = ({ archiveAll }) => {
   return (
-    <ArchiveButtonContainer>
+    <ArchiveButtonContainer onClick={archiveAll}>
       <Icon name="archive" size={16}/>
       <span className="font-bold">Archive all calls</span>
     </ArchiveButtonContainer>
