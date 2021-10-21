@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import Header from './Header.jsx';
-import Icon from './component/Element/Icon/index'
+import styled from 'styled-components';
 import Header from './component/Header/Header'
+
+const ContentWrapper = styled.div`
+
+`
 
 const App = () => {
   return (
     <div className='container'>
       <Header/>
+      <ContentWrapper></ContentWrapper>
     </div>
   );
 };
