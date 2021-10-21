@@ -19,7 +19,7 @@ const ContentWrapper = styled.div`
 
 const App = () => {
   const history = useHistory();
-  const [activeBitem, setBitem] = useState('phone')
+  const [activeBitem, setBitem] = useState('')
   const [activeHitem, setHitem] = useState(1);
   const [missedcallCount, setMissedCallCount] = useState(0)
  
