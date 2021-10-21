@@ -1,8 +1,10 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path');
 
 module.exports = {
   mode: 'production',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -43,8 +45,11 @@ module.exports = {
     hints: false
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html",
-    })
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      inject: true,
+      template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
   ]
 };
